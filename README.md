@@ -16,18 +16,26 @@ npm run build
 npm run preview
 ```
 
+## Environment variables
+
+Create a `.env` file if needed (see `.env.example`). All client-exposed values must use the `VITE_` prefix.
+
+- `VITE_API_URL` - Optional endpoint used for a lightweight availability check.
+
 ## Deploy
 
-This is a static Vite build. Deploy the generated `dist/` folder to Netlify, Vercel static hosting, GitHub Pages, or any static host.
+This is a static Vite build. Deploy the generated `dist/` folder to Vercel, Netlify, GitHub Pages, or any static host.
+
+For Vercel-specific steps, see `DEPLOYMENT.md`.
 
 ## Replace characters
 
-Drop replacement PNGs at:
+Default character art is bundled from `src/assets`.
 
-- `public/characters/kevin_character.png`
-- `public/characters/brianna_character.png`
+To customize, replace:
 
-Keep file names the same, and use transparent PNGs for best results.
+- `src/assets/kevin_character.svg`
+- `src/assets/brianna_character.svg`
 
 ## Easter egg
 
@@ -36,4 +44,3 @@ Enter Konami code:
 `↑ ↑ ↓ ↓ ← → ← → B A`
 
 It unlocks **SECOND CHANCE MODE** and reveals the one-time `+5 MIN` button.
-

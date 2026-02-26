@@ -30,12 +30,17 @@ For Vercel-specific steps, see `DEPLOYMENT.md`.
 
 ## Replace characters
 
-Default character art is bundled from `src/assets`.
+Character art is loaded from the `public/assets` folder by default.
 
-To customize, replace:
+To customize, add or replace:
 
-- `src/assets/kevin_character.svg`
-- `src/assets/brianna_character.svg`
+- `public/assets/kevin_character.png`
+- `public/assets/brianna_character.png`
+
+You can also override the paths with environment variables:
+
+- `VITE_KEVIN_CHARACTER_SRC`
+- `VITE_BRIANNA_CHARACTER_SRC`
 
 ## Easter egg
 

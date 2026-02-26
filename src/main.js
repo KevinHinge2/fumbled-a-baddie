@@ -2,8 +2,8 @@ import './styles.css';
 import { createAudio } from './audio';
 import { clearState, loadState, saveState } from './state';
 import { startParallax, trapFocus, triggerGlitch, triggerScreenShake } from './effects';
-import kevinCharacter from './assets/kevin_character.svg';
-import briannaCharacter from './assets/brianna_character.svg';
+const kevinCharacter = import.meta.env.VITE_KEVIN_CHARACTER_SRC || '/assets/kevin_character.png';
+const briannaCharacter = import.meta.env.VITE_BRIANNA_CHARACTER_SRC || '/assets/brianna_character.png';
 
 const API_URL = import.meta.env.VITE_API_URL;
 

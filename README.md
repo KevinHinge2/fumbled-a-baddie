@@ -1,6 +1,6 @@
 # Fumbled a Baddie - Retro Arcade GAME OVER
 
-A Vite + Vanilla JS mini-site that recreates a 90s arcade GAME OVER vibe with CRT effects, countdown logic, modal scheduling, endings, audio synthesis, and a Konami easter egg.
+A Vite + Vanilla JS retro landing page with CRT flavor, responsive character layout, live system notice data, and playful lock-in/logout interactions.
 
 ## Run locally
 
@@ -16,6 +16,23 @@ npm run build
 npm run preview
 ```
 
+## Feature highlights
+
+- **Responsive retro layout**
+  - Desktop 3-column composition (left character / center UI / right character).
+  - Tablet keeps both characters visible but smaller.
+  - Mobile collapses to one column with a `SHOW CHARACTERS` toggle.
+- **Live SYSTEM NOTICE data**
+  - Date timer updates every second.
+  - Local timezone and live time display.
+  - Geolocation-backed location with manual fallback (`UNKNOWN SECTOR` if denied).
+  - Attempts-to-reschedule persisted in `localStorage`.
+- **Interaction polish**
+  - Reusable component templates (Layout, NoticePanel, Button, Settings, Modal).
+  - Accessible keyboard focus rings, focus-trapped modals, and Escape-to-close behavior.
+  - Persisted Sound and Motion settings with reduced-motion defaults respected.
+  - Lock In modal generates a shareable message with copy-to-clipboard support.
+
 ## Environment variables
 
 Create a `.env` file if needed (see `.env.example`). All client-exposed values must use the `VITE_` prefix.
@@ -27,38 +44,3 @@ Create a `.env` file if needed (see `.env.example`). All client-exposed values m
 This is a static Vite build. Deploy the generated `dist/` folder to Vercel, Netlify, GitHub Pages, or any static host.
 
 For Vercel-specific steps, see `DEPLOYMENT.md`.
-
-## Operational readiness
-
-Use this quick sequence before each release:
-
-```bash
-npm ci
-npm run build
-```
-
-Then deploy `dist/` to your static host. For Vercel settings and rollback guidance, see `DEPLOYMENT.md`.
-
-A GitHub Actions workflow is included at `.github/workflows/ci.yml` to verify builds on pull requests and pushes to `main`.
-
-## Replace characters
-
-Character art is loaded from the `public/assets` folder by default.
-
-To customize, add or replace:
-
-- `public/assets/kevin_character.png`
-- `public/assets/brianna_character.png`
-
-You can also override the paths with environment variables:
-
-- `VITE_KEVIN_CHARACTER_SRC`
-- `VITE_BRIANNA_CHARACTER_SRC`
-
-## Easter egg
-
-Enter Konami code:
-
-`↑ ↑ ↓ ↓ ← → ← → B A`
-
-It unlocks **SECOND CHANCE MODE** and reveals the one-time `+5 MIN` button.

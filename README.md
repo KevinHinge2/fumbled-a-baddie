@@ -28,6 +28,19 @@ This is a static Vite build. Deploy the generated `dist/` folder to Vercel, Netl
 
 For Vercel-specific steps, see `DEPLOYMENT.md`.
 
+## Operational readiness
+
+Use this quick sequence before each release:
+
+```bash
+npm ci
+npm run build
+```
+
+Then deploy `dist/` to your static host. For Vercel settings and rollback guidance, see `DEPLOYMENT.md`.
+
+A GitHub Actions workflow is included at `.github/workflows/ci.yml` to verify builds on pull requests and pushes to `main`.
+
 ## Replace characters
 
 Character art is loaded from the `public/assets` folder by default.

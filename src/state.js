@@ -1,14 +1,19 @@
 const STORAGE_KEY = 'fumbledArcadeState';
 
+const reduceMotion = typeof window !== 'undefined'
+  && window.matchMedia
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const defaultSoundEnabled = reduceMotion ? false : false;
+
 const defaults = {
-  targetTimestamp: null,
-  location: 'missing',
+  location: 'UNKNOWN SECTOR',
+  manualLocation: '',
+  scheduleISO: '',
   logoutAttempts: 0,
-  secondChanceUsed: false,
-  secondChanceUnlocked: false,
-  soundEnabled: true,
-  motionEnabled: true,
-  ending: null,
+  soundEnabled: defaultSoundEnabled,
+  motionEnabled: !reduceMotion,
+  showCharactersMobile: false,
 };
 
 export function loadState() {
@@ -23,10 +28,6 @@ export function loadState() {
 
 export function saveState(state) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-export function clearState() {
-  localStorage.removeItem(STORAGE_KEY);
 }
 
 export { defaults };

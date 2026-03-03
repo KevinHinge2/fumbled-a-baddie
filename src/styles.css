@@ -44,6 +44,14 @@ body {
   line-height: 1.9;
 }
 
+.hero-joke {
+  min-height: 2.8em;
+  color: var(--neon-green);
+  max-width: 58ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .layout-grid {
   display: grid;
   grid-template-columns: minmax(140px, 1fr) minmax(320px, 690px) minmax(140px, 1fr);

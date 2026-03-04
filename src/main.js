@@ -17,6 +17,16 @@ let clockInterval;
 let glitchInterval;
 let releaseFocus = () => {};
 
+const gameOverJokes = [
+  'Tip: bad timing is recoverable. bad communication is not.',
+  'Status: dramatic? yes. doomed? nah, just send a thoughtful text.',
+  'No breakup propaganda here — this level rewards effort and emotional maturity.',
+  'Respawn rule: apologize fast, listen faster, plan date night faster-est.',
+  'Achievement unlocked: fumble prevention through kindness and snacks.',
+];
+let jokeInterval;
+
+
 function formatNow() {
   const now = new Date();
   const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -75,6 +85,25 @@ function scheduleClock() {
     const { tz } = formatNow();
     document.querySelector('#timeWithZone').textContent = `${time} ${tz}`;
   }, 1000);
+}
+
+
+function rotateHeroJokes() {
+  clearInterval(jokeInterval);
+  const jokeLine = document.querySelector('#heroJoke');
+  if (!jokeLine) return;
+
+  let currentIndex = 0;
+  jokeLine.textContent = gameOverJokes[currentIndex];
+
+  jokeInterval = setInterval(() => {
+    currentIndex = (currentIndex + 1) % gameOverJokes.length;
+    jokeLine.textContent = gameOverJokes[currentIndex];
+    if (state.motionEnabled) {
+      jokeLine.classList.add('jitter');
+      setTimeout(() => jokeLine.classList.remove('jitter'), 180);
+    }
+  }, 3200);
 }
 
 function applyGlitchCycle() {
@@ -248,11 +277,13 @@ function init() {
   updateNotice();
   scheduleClock();
   applyGlitchCycle();
+  rotateHeroJokes();
 }
 
 window.addEventListener('beforeunload', () => {
   clearInterval(clockInterval);
   clearInterval(glitchInterval);
+  clearInterval(jokeInterval);
 });
 
 init();

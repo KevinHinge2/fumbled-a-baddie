@@ -15,6 +15,7 @@ export function layoutTemplate(prefersReduced) {
       <header class="hero">
         <h1>GAME OVER</h1>
         <p>oh no.<br/>you're about to fumble a baddie</p>
+        <p class="hero-joke" id="heroJoke" aria-live="polite">Tip: bad timing is recoverable. bad communication is not.</p>
       </header>
 
       <section class="layout-grid">
